@@ -7,17 +7,30 @@
 spring:
   application:
     name: ecom-application
-  h2:
-    console:
-      enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecomdb
+    username: root
+    password: root
   jpa:
+    database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: create
-  datasource:
-    url: jdbc:h2:mem:test
-    username: sa
-    password: ''
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+# For H2 Database configuration, uncomment the following lines:
+#  h2:
+#    console:
+#      enabled: true
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    username: sa
+#    password: ''
+
 
 management:
   endpoints:
@@ -32,6 +45,7 @@ management:
   info:
     env:
       enabled: true
+
 
 server:
   shutdown: graceful
